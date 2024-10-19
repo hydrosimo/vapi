@@ -8,26 +8,63 @@ warning('off','all')
 
 %% Loading data and variables 
 
-location = 'Precipitation at Casola Valsenio (154 m slm), Senio River Drainage Basin';
+location = 'Precipitation at Bologna-Ruffillo (90 m slm), Savena River Drainage Basin';
 load prpb
 load time_int
 load tr
 
 % Zone parameter
 r      = 0.89;                % -,  Toscana-Emilia-Marche (rep GNDCI-Line 1). 
-m_hg   = 70;                  % mm, average daily rainfall                 % modify
+m_hg   = 60;                  % mm, average daily rainfall                 % modify
 m_hh   = 25;                  % mm, average hourly rainfall                % modify
-z      = 3;                   % -,  type of zone                           % modify
-load ('romagna-24/pluvio_cv') % mm, hourly rainfall                        % modify
-pluvio = pluvio_cv;
+z      = 5;                   % -,  type of zone                           % modify
+load ('zena-24/pluvio_rh2')     % mm, hourly rainfall                        % modify
+pluvio = pluvio_rh2;            % mm/15min, 
 
-% Senio-23 (Palazzuolo sul Senio)  % m_hg = 75
-% rain1_23  = 14.6;      % mm                                              % modify
-% rain3_23  = 36.8;      % mm                                              % modify
-% rain6_23  = 61.4;      % mm                                              % modify
-% rain12_23 = 100.2;     % mm                                              % modify
-% rain24_23 = 155.4;     % mm                                              % modify
-% rain48_23 = 200;       % mm    
+% Modena-24 (Urbana)  % m_hg=65; m_hh=24; z=5
+% rain1_24  = 11;         % mm                                              % modify
+% rain3_24  = 25.2;       % mm                                              % modify
+% rain6_24  = 46;         % mm                                              % modify
+% rain12_24 = 67.4;       % mm                                              % modify
+% rain24_24 = 77;         % mm                                              % modify
+% rain36_24 = 77;         % mm                                              % modify
+% rain48_24 = 77;         % mm                                              % modify
+
+% Savena-24 (Pianoro)  % m_hg=65; m_hh=26; z=5
+% rain1_24  = 37.2;      % mm                                              % modify
+% rain3_24  = 86.8;      % mm                                              % modify
+% rain6_24  = 133.2;     % mm                                              % modify
+% rain12_24 = 174;       % mm                                              % modify
+% rain24_24 = 181.2;     % mm                                              % modify
+% rain36_24 = 184;       % mm                                              % modify
+% rain48_24 = 184;       % mm                                              % modify
+
+% Savena-24 (Pianoro)  % m_hg=65; m_hh=26; z=5
+% rain1_23  = 9.8;       % mm                                              % modify
+% rain3_23  = 27.8;      % mm                                              % modify
+% rain6_23  = 48.6;      % mm                                              % modify
+% rain12_23 = 69.8;      % mm                                              % modify
+% rain24_23 = 125.4;     % mm                                              % modify
+% rain36_23 = 156.6;     % mm                                              % modify
+% rain48_23 = 156.6;     % mm                                              % modify
+
+% Savena-23 (Bologna San Ruffillo)  % m_hg=60; m_hh=25
+rain1_23  = 11.4;        % mm                                              % modify
+rain3_23  = 32.2;      % mm                                              % modify
+rain6_23  = 52.8;     % mm                                              % modify
+rain12_23 = 68;     % mm                                              % modify
+rain24_23 = 112.2;     % mm                                              % modify
+rain36_23 = 133;     % mm                                              % modify
+rain48_23 = 133;     % mm                                              % modify
+
+% Savena-24 (Bologna San Ruffillo)  % m_hg=60; m_hh=25
+rain1_24  = 34;        % mm                                              % modify
+rain3_24  = 77.2;      % mm                                              % modify
+rain6_24  = 108.6;     % mm                                              % modify
+rain12_24 = 139.6;     % mm                                              % modify
+rain24_24 = 159.4;     % mm                                              % modify
+rain36_24 = 161.8;     % mm                                              % modify
+rain48_24 = 161.8;     % mm                                              % modify
 
 % Senio-24 (Palazzuolo sul Senio)  % m_hg = 75
 % rain1_24  = 24.8;      % mm                                              % modify
@@ -38,30 +75,14 @@ pluvio = pluvio_cv;
 % rain36_24 = 180.4;     % mm                                              % modify
 % rain48_24 = 197;       % mm    
 
-% Senio-23 (Valsenio)          % m_hg = 70
-rain1_23  = 15.2;    % mm                                                % modify
-rain3_23  = 36;      % mm                                                % modify
-rain6_23  = 57.8;    % mm                                                % modify
-rain12_23 = 106.8;   % mm                                                % modify
-rain24_23 = 193.6;   % mm                                                % modify
-rain48_23 = 242.8;   % mm                                                % modify
-
 % Senio-24 (Valsenio)          % m_hg = 70
-rain1_24  = 34.2;    % mm                                                % modify
-rain3_24  = 71.4;    % mm                                                % modify
-rain6_24  = 114.4;   % mm                                                % modify
-rain12_24 = 192.6;   % mm                                                % modify
-rain24_24 = 252.6;   % mm                                                % modify
-rain36_24 = 297.4;   % mm                                                % modify
-rain48_24 = 319.8;   % mm                                                % modify
-
-% Marradi-23 (Lamone)          % m_hg = 75
-% rain1_23  = 10;      % mm                                                % modify
-% rain3_23  = 24.2;    % mm                                                % modify
-% rain6_23  = 41.6;    % mm                                                % modify
-% rain12_23 = 70.4;    % mm                                                % modify
-% rain24_23 = 100.4;   % mm                                                % modify
-% rain48_23 = 142;     % mm                                                % modify
+% rain1_24  = 34.2;    % mm                                                % modify
+% rain3_24  = 71.4;    % mm                                                % modify
+% rain6_24  = 114.4;   % mm                                                % modify
+% rain12_24 = 192.6;   % mm                                                % modify
+% rain24_24 = 252.6;   % mm                                                % modify
+% rain36_24 = 297.4;   % mm                                                % modify
+% rain48_24 = 319.8;   % mm                                                % modify
 
 % Marradi-24 (Lamone)          % m_hg = 75
 % rain1_24  = 12.8;    % mm                                                % modify
@@ -72,30 +93,14 @@ rain48_24 = 319.8;   % mm                                                % modif
 % rain36_24 = 172;     % mm                                                % modify
 % rain48_24 = 181.4;   % mm                                                % modify
 
-% Santerno-23 (Castel del Rio) % m_hg = 65
-% rain1_23  = 12;      % mm                                                % modify
-% rain3_23  = 31.4;    % mm                                                % modify
-% rain6_23  = 54.6;    % mm                                                % modify
-% rain12_23 = 96.2;    % mm                                                % modify
-% rain24_23 = 172.6;   % mm                                                % modify
-% rain48_23 = 226.4;   % mm                                                % modify
-
 % Santerno-24 (Castel del Rio) % m_hg = 65
-% rain1_24  = 25.4;    % mm                                                % modify
+% rain1_24  = 25.4;                                                        % modify
 % rain3_24  = 63.6;    % mm                                                % modify
 % rain6_24  = 100.4;   % mm                                                % modify
 % rain12_24 = 148.8;   % mm                                                % modify
 % rain24_24 = 211;     % mm                                                % modify
 % rain36_24 = 257.6;   % mm                                                % modify
 % rain48_24 = 275.4;   % mm                                                % modify
-
-% Santerno-24 (Firenzuola)     % m_hg = 60
-% rain1_23  = 8.4;     % mm                                                % modify
-% rain3_23  = 23.6;    % mm                                                % modify
-% rain6_23  = 37.2;    % mm                                                % modify
-% rain12_23 = 67.6;    % mm                                                % modify
-% rain24_23 = 96.2;    % mm                                                % modify
-% rain48_23 = 124;     % mm     
 
 % Santerno-24 (Firenzuola)     % m_hg = 60
 % rain1_24  = 7.8;     % mm                                                % modify
@@ -106,14 +111,6 @@ rain48_24 = 319.8;   % mm                                                % modif
 % rain36_24 = 108.4;   % mm                                                % modify
 % rain48_24 = 119.2;   % mm 
 
-% Lamone-23 (San Cassiano)     % m_hg = 75
-% rain1_23  = 16.8;    % mm                                                % modify
-% rain3_23  = 41.4;    % mm                                                % modify
-% rain6_23  = 71;      % mm                                                % modify
-% rain12_23 = 125.2;   % mm                                                % modify
-% rain24_23 = 207.8;   % mm                                                % modify
-% rain48_23 = 254.8;   % mm                                                % modify
-
 % Lamone-24 (San Cassiano)     % m_hg = 75
 % rain1_24  = 51.8;    % mm                                                % modify
 % rain3_24  = 120;     % mm                                                % modify
@@ -123,12 +120,59 @@ rain48_24 = 319.8;   % mm                                                % modif
 % rain36_24 = 334.8;   % mm                                                % modify
 % rain48_24 = 364.2;   % mm                                                % modify
 
-% Marzeno-23 (Trebbio)         % m_hg = 65
-% rain3_23  = 38;      % mm                                                % modify
-% rain12_23 = 121.8;   % mm                                                % modify
-% rain24_23 = 213.2;   % mm                                                % modify
-% rain36_23 = 250.4;   % mm                                                % modify
-% rain48_23 = 225;     % mm                                                % modify
+% Corinaldo-14 (Misa)          % m_hg = 60
+% rain1_14  = 26.2;    % mm                                                % modify
+% rain3_14  = 47.8;    % mm                                                % modify
+% rain6_14  = 68.4;    % mm                                                % modify
+% rain12_14 = 83;      % mm                                                % modify
+% rain24_14 = 90.6;    % mm                                                % modify
+% rain36_14 = 96.8;    % mm                                                % modify
+% rain48_14 = 101.4;   % mm                                                % modify
+
+% Barbara-14 (Misa)          % m_hg = 60
+% rain1_14  = 22.2;    % mm                                                % modify
+% rain3_14  = 44;      % mm                                                % modify
+% rain6_14  = 63;      % mm                                                % modify
+% rain12_14 = 71.4;    % mm                                                % modify
+% rain24_14 = 80.6;    % mm                                                % modify
+% rain36_14 = 84.8;    % mm                                                % modify
+% rain48_14 = 87.2;    % mm                                                % modify
+
+% Arcevia-14 (Misa)          % m_hg = 65
+% rain1_14  = 11.6;    % mm                                                % modify
+% rain3_14  = 16.8;    % mm                                                % modify
+% rain6_14  = 17.6;    % mm                                                % modify
+% rain12_14 = 20.8;    % mm                                                % modify
+% rain24_14 = 32.8;    % mm                                                % modify
+% rain36_14 = 43.8;    % mm                                                % modify
+% rain48_14 = 47.8;    % mm                                                % modify
+
+% Arcevia-22 (Misa)          % m_hg = 65
+% rain1_22  = 47;      % mm                                                % modify
+% rain3_22  = 94.8;    % mm                                                % modify
+% rain6_22  = 117.8;   % mm                                                % modify
+% rain12_22 = 128.8;   % mm                                                % modify
+% rain24_22 = 129.2;   % mm                                                % modify
+% rain36_22 = 129.4;   % mm                                                % modify
+% rain48_22 = 138.8;   % mm                                                % modify
+
+% Senigallia-14 (Misa)       % m_hg = ??
+% rain1_14  = 22.2;    % mm                                                % modify
+% rain3_14  = 44;      % mm                                                % modify
+% rain6_14  = 63;      % mm                                                % modify
+% rain12_14 = 71.4;    % mm                                                % modify
+% rain24_14 = 80.6;    % mm                                                % modify
+% rain36_14 = 84.8;    % mm                                                % modify
+% rain48_14 = 87.2;    % mm                                                % modify
+
+% Cantiano-22 (Metauro)   % m_hg = 65
+% rain1_22  = 101.4;    % mm                                                % modify
+% rain3_22  = 256.6;      % mm                                              % modify
+% rain6_22  = 384;      % mm                                                % modify
+% rain12_22 = 419;    % mm                                                  % modify
+% rain24_22 = 419;    % mm                                                  % modify
+% rain36_22 = 420.6;    % mm                                                % modify
+% rain48_22 = 420.6;    % mm                                                % modify
 
 %% Programming
 
@@ -200,10 +244,11 @@ h1_rain23 = [
     plot(6, rain6_23,'LineWidth',mw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms,'Clipping','off') 
     plot(12, rain12_23,'LineWidth',mw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms,'Clipping','off') 
     plot(24, rain24_23,'LineWidth',mw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms,'Clipping','off')
+    plot(36, rain36_23,'LineWidth',mw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms,'Clipping','off') 
     plot(48, rain48_23,'LineWidth',mw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms,'Clipping','off') 
 ];
-% Romagna 2024
-h1_rain24 = [
+% Marche 2022
+h1_rain = [
     plot(1,  rain1_24,'LineWidth',mw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms,'Clipping','off')
     plot(3,  rain3_24,'LineWidth',mw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms,'Clipping','off') 
     plot(6,  rain6_24,'LineWidth',mw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms,'Clipping','off') 
@@ -219,15 +264,16 @@ axis([minx maxx miny maxy]);
 ylabel(sprintf('depth, h (mm)'));
 yyaxis left
 set(gca, 'YColor', 'k');  
-ylim([0 80]);
-h2 = bar([0:0.25:47.75], pluvio, 'hist'); 
+ylim([0 50]);
+h2 = bar([0:0.25:47.75], pluvio, 'hist');
 h2.FaceColor = [0.9, 0.9, 0.9];
 h2.EdgeColor = [0.85, 0.85, 0.85];
 vyt = miny:10:maxy;
 set(gca,'xtick',vxt,'ytick',vyt,'XMinorTick','on','YMinorTick','on');
 ylabel(sprintf('intensity, i (mm h^{-1})'), 'Color', 'k');
-lgd = legend([h1; h1_rain23(1); h2; h1_rain24(1)],'T = 5 y','T = 10 y','T = 20 y','T = 50 y','T = 100 y','T = 200 y','T = 500 y','T = 1000 y','2023, h','2024, i','2024, h','Location','bestoutside','NumColumns',1);
-legend('boxon')
+% lgd = legend([h1; h1_rain23(1); h2; h1_rain24(1)],'T = 5 y','T = 10 y','T = 20 y','T = 50 y','T = 100 y','T = 200 y','T = 500 y','T = 1000 y','2023, h','2024, i','2024, h','Location','bestoutside','NumColumns',1);
+% lgd = legend([h1; h2; h1_rain14(1)],'T = 5 y','T = 10 y','T = 20 y','T = 50 y','T = 100 y','T = 200 y','T = 500 y','T = 1000 y','2014, i','2014, h','Location','bestoutside','NumColumns',1);
+% legend('boxon')
 % lgd.Layout.Tile = 'east';
 grid on
 set(gca,'PlotBoxAspectRatio',[5 3 1],'FontSize',sf,'Ticklength',[0.015 0.00]);
@@ -239,7 +285,7 @@ ax.Layer = 'top';
 
 nexttile
 miny = 0;
-maxy = 90;
+maxy = 150;
 set(gca,'FontSize',sf,'Box','on');
 yyaxis left
 set(gca, 'YColor', 'k');
@@ -259,40 +305,42 @@ h3(8).Color = '#FFB6C1';
 % Romagna 2023
 g = [0.45, 0.45, 0.45];
 h2_rain23 = [
-    plot(1, rain1_23/1,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms)
-    plot(3, rain3_23/3,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms)
-    plot(6, rain6_23/6,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms)
-    plot(12, rain12_23/12,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms)
-    plot(24, rain24_23/24,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms)
-    plot(48, rain48_23/48,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor',g,'MarkerEdgeColor','k','MarkerSize',ms)
+    plot(1, rain1_23/1,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','m','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(3, rain3_23/3,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','m','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(6, rain6_23/6,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','m','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(12, rain12_23/12,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','m','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(24, rain24_23/24,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','m','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(48, rain48_23/48,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','m','MarkerEdgeColor','k','MarkerSize',ms)
 ];
-% Romagna 2024
-h2_rain24 = [
-    plot(1,  rain1_24/1,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms)
-    plot(3,  rain3_24/3,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms)
-    plot(6,  rain6_24/6,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms)
-    plot(12, rain12_24/12,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms)
-    plot(24, rain24_24/24,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms)
-    plot(36, rain36_24/36,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms)
-    plot(48, rain48_24/48,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','y','MarkerEdgeColor','k','MarkerSize',ms)
+% Marche 2022
+h2_rain = [
+    plot(1,  rain1_24/1,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','g','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(3,  rain3_24/3,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','g','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(6,  rain6_24/6,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','g','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(12, rain12_24/12,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','g','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(24, rain24_24/24,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','g','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(36, rain36_24/36,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','g','MarkerEdgeColor','k','MarkerSize',ms)
+    plot(48, rain48_24/48,'LineWidth',lw,'LineStyle','none','Marker','o','MarkerFaceColor','g','MarkerEdgeColor','k','MarkerSize',ms)
 ];
 vxt = minx:6:maxx;
-vyt = miny:10:maxy;
+vyt = miny:30:maxy;
 set(gca,'xtick',vxt,'ytick',vyt,'XMinorTick','on','YMinorTick','on');
 axis([minx maxx miny maxy]);
 ylabel(sprintf('intensity, i (mm h^{-1})'));
 xlabel('duration, d (h)');
 yyaxis right
 set(gca, 'YColor', 'k', 'YDir', 'reverse');   
-ylim([0 90]);
+ylim([0 50]);
 h4 = bar([0:0.25:47.75], pluvio, 'hist');
 h4.FaceColor = [0.9, 0.9, 0.9];
 h4.EdgeColor = [0.85, 0.85, 0.85];
 vyt = miny:10:maxy;
 set(gca,'xtick',vxt,'ytick',vyt,'XMinorTick','on','YMinorTick','on');
 ylabel(sprintf('intensity, i (mm h^{-1})'), 'Color', 'k');
-% legend([h3; h2_rain23(1); h4; h2_rain24(1)],'T = 5 y','T = 10 y','T = 20 y','T = 50 y','T = 100 y','T = 200 y','T = 500 y','T = 1000 y','2023, i','2024, i','2024, i','Location','bestoutside','NumColumns',1);
+lgd = legend([h1; h1_rain23(1); h4; h1_rain(1); h2_rain23(1); h2_rain(1)],'T = 5 y','T = 10 y','T = 20 y','T = 50 y','T = 100 y','T = 200 y','T = 500 y','T = 1000 y','2023, h','2024, i','2024, h','2023, i','2024, i','Location','bestoutside','NumColumns',1);
+% lgd = legend([h1; h2; h1_rain(1); h2_rain(1)],'T = 5 y','T = 10 y','T = 20 y','T = 50 y','T = 100 y','T = 200 y','T = 500 y','T = 1000 y','2024, i','2024, h','2024, i','Location','bestoutside','NumColumns',1);
 % legend('boxon')
+% lgd.Layout.Tile = 'east';
 grid on
 set(gca,'PlotBoxAspectRatio',[5 3 1],'FontSize',sf,'Ticklength',[0.015 0.00],'LineWidth',1.5);
 sgtitle(location,'Color','k','FontSize',sf,'FontWeight','normal');
